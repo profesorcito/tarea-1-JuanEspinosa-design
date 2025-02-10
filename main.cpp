@@ -2,12 +2,17 @@
 
 using namespace std;
 
-// TODO: Implementar función para calcular la suma de los dígitos de un número
+//  FUNCION PARA CALCULO DE SUMA DE DIGITOS DE UN NUMERO.
 int sumaDigitos(int n) {
-    // Completa esta función
+    int suma = 0;
+    while (n > 0) {
+        suma += n % 10;
+        n /= 10;
+    }
+    return suma;
 }
 
-// TODO: Implementar la lógica para calcular la tarifa
+// ASIGNACION Y CALCULO DE TARIFA.
 double calcularTarifa(int horas, int dia) {
     const double TARIFA_PRIMERA_HORA = 6.00;
     const double TARIFA_1_A_3 = 4.00;
@@ -17,48 +22,52 @@ double calcularTarifa(int horas, int dia) {
     const double INCREMENTO_FIN_SEMANA = 1.15;
     const double DESCUENTO_DIGITOS = 0.95;
 
-    // Validar límite de horas
+    // VALIDACION DEL LIMITE DE HORAS.
     if (horas > LIMITE_HORAS) {
         return -1;
     }
 
     double totalPagar = 0.0;
 
-    // TODO: Implementar la lógica para calcular la tarifa base
+    // CALCULO DE LA TARIFA BASE.
     if (horas == 1) {
-        // Completa aquí
+        totalPagar = TARIFA_PRIMERA_HORA;
     } else if (horas > 1 && horas <= 3) {
-        // Completa aquí
+        totalPagar = TARIFA_PRIMERA_HORA + (horas - 1) * TARIFA_1_A_3;
     } else if (horas > 3 && horas <= 5) {
-        // Completa aquí
+        totalPagar = TARIFA_PRIMERA_HORA + 2 * TARIFA_1_A_3 + (horas - 3) * TARIFA_3_A_5;
     } else {
-        // Completa aquí
+        totalPagar = TARIFA_FIJA;
     }
 
-    // TODO: Aplicar incremento si es fin de semana
-    if (/* Completa esta condición */1) {
+    // CONDICIONAL PARA EL INCREMENTO DE LA TARIFA EN LOS FINES DE SEMANA.
+    if (dia == 6 || dia == 7) {
         totalPagar *= INCREMENTO_FIN_SEMANA;
     }
 
-    // TODO: Aplicar descuento si la suma de los dígitos es múltiplo de 3
-    if (/* Completa esta condición */1) {
+    // CONDICIONAL PARA EL DESCUENTO SI LA SUMA DE LOS DIGITOS ES MODULO DE 3 O ES MULTIPLO DE 3.
+    if (sumaDigitos(horas) % 3 == 0) {
         totalPagar *= DESCUENTO_DIGITOS;
     }
 
     return totalPagar;
 }
 
+// FUNCION PRINCIPAL.
 int main() {
+    system("chcp 65001 > nul"); // PROFESORCITO PUSE EL COMANDO PARA LOS CARACTERES ESPECIALES Y AHORA CUANDO METEN LOS NUMEROS POR CONSOLA APARECEM REPETIDOS :(.
     int horas, dia;
+    cout << "Lo quiero profesorcito y perdón por el incumplimiento, no volverá a pasar :)" << endl;
+    cout << "Ahora ingresa los datos: " << endl;
 
-    // Leer los valores de entrada
+    // TOMA LOS VALORES DE ENTRADA CON EL CIN.
     cin >> horas >> dia;
 
     double resultado = calcularTarifa(horas, dia);
     if (resultado == -1) {
         cout << "ERROR" << endl;
     } else {
-        printf("%.2f\n", resultado);
+        printf("%.2f\n", resultado);  // FORMATO PARA QUE SALGAN 2 NUMEROS DECIMALES.
     }
 
     return 0;
