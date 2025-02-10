@@ -55,10 +55,8 @@ double calcularTarifa(int horas, int dia) {
 
 // FUNCION PRINCIPAL.
 int main() {
-    system("chcp 65001 > nul"); // PROFESORCITO PUSE EL COMANDO PARA LOS CARACTERES ESPECIALES Y AHORA CUANDO METEN LOS NUMEROS POR CONSOLA APARECEM REPETIDOS :(.
+    //system("chcp 65001 > nul"); // PROFESORCITO PUSE EL COMANDO PARA LOS CARACTERES ESPECIALES Y AHORA CUANDO METEN LOS NUMEROS POR CONSOLA APARECEM REPETIDOS :(.
     int horas, dia;
-    cout << "Lo quiero profesorcito y perdón por el incumplimiento, no volverá a pasar :)" << endl;
-    cout << "Ahora ingresa los datos: " << endl;
 
     // TOMA LOS VALORES DE ENTRADA CON EL CIN.
     cin >> horas >> dia;
